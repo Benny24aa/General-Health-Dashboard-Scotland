@@ -270,4 +270,35 @@ covidcases <- function(input, output){
         
         ggplot(data = Injuriesagedeaths, aes(x=FinancialYear, y=NumberofDeaths, group=AgeGroup)) + geom_line(aes(color=AgeGroup)) + theme(panel.border = element_rect(fill = "transparent", color = 4, size = 10)) + theme_bw()
       })
+      
+      #Download Data Buttons
+      
+      #Covid Case and Death Data for Healthboard Download Button
+      output$test <- downloadHandler(
+        filename = "ScotlandCase.xlsx",
+        content = function(file) {
+          writexl::write_xlsx(Coviddata,file)
+          })
+      
+      #COVID Case and Gender Download Button
+      output$covidcasegenderdownload <- downloadHandler(
+        filename = "casesbygender.xlsx",
+        content = function (file) {
+          writexl::write_xlsx(Casesgendertotal,file)
+          })
+      
+      #Reinfections and age download button
+       output$covidagegroupdownload <- downloadHandler(
+       filename = "COVIDagegroups.xlsx",
+       content = function (file) {
+         writexl::write_xlsx(CasesAgeTotal,file)
+      })
+      
+       #Deprivation Cases
+       output$coviddeprivationdownload <- downloadHandler(
+         filename = "covidcasesdeprivation.xlsx",
+         content = function (file) {
+           writexl::write_xlsx(CasesDeprivation,file)
+         }
+       )
 }

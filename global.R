@@ -19,6 +19,7 @@ library(RColorBrewer)
 library(stats)
 library(utils)
 library(sf)
+library(writexl)
 #COVID Section Data Files
 Coviddata <- read_excel("ScotlandCase.xlsx")
 VaccineData <- read_excel("ScotlandVaccine.xlsx")
