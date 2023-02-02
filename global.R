@@ -20,6 +20,7 @@ library(stats)
 library(utils)
 library(sf)
 library(writexl)
+library(base64enc)
 #COVID Section Data Files
 Coviddata <- read_excel("ScotlandCase.xlsx")
 VaccineData <- read_excel("ScotlandVaccine.xlsx")

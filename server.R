@@ -294,11 +294,10 @@ covidcases <- function(input, output){
          writexl::write_xlsx(CasesAgeTotal,file)
       })
       
-       #Deprivation Cases
+       #Deprivation Cases Download Button
        output$coviddeprivationdownload <- downloadHandler(
          filename = "covidcasesdeprivation.xlsx",
          content = function (file) {
            writexl::write_xlsx(CasesDeprivation,file)
-         }
-       )
+         })
 }

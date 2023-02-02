@@ -1,6 +1,11 @@
+title <- tags$a(href='https://generalhealthdashboardbenharley.shinyapps.io/GeneralHealthDashboard/',
+               tags$img(src="Scotland.jpg", height = '40', width = '40'),
+               style = "color: white; font-size: 20px",
+               'Scotland General Health Dashboard')
+
 dashboardPage(
-  skin = "yellow",
-  dashboardHeader(title = "Scotland General Health Dashboard",
+  skin = "blue",
+  dashboardHeader(title = title,
                   titleWidth = 450),
   dashboardSidebar(
   #  selectInput(inputId = "AreaName", label = "Select a Local Area:", choices = unique(Coviddata$areaName)),
