@@ -6,7 +6,10 @@ title <- tags$a(href='https://generalhealthdashboardbenharley.shinyapps.io/Gener
 dashboardPage(
   skin = "blue",
   dashboardHeader(title = title,
-                  titleWidth = 450),
+                  titleWidth = 450,
+                  tags$li(class="dropdown", tags$a(href="https://public.tableau.com/app/profile/ben.harley/viz/GeneralHealthDashboardofScotland-Remake3/MainPage", icon("house-medical"), "Tableau Page", target="_blank")),
+                  tags$li(class="dropdown", tags$a(href ="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAD_Bs3ZUOEZOMEVMMUxMSEFJUjlaOVgwU0wzNUJWRy4u", icon("bug"), "Feedback and Bugs", target="_blank")),
+                  tags$li(class="dropdown", tags$a(href="https://github.com/Benny24aa/General-Health-Dashboard-Scotland", icon("github"), "Source Code", target="_blank"))),
   dashboardSidebar(
   #  selectInput(inputId = "AreaName", label = "Select a Local Area:", choices = unique(Coviddata$areaName)),
     #selectInput(inputId = "column", label = "Select a column to plot", choices = c("newCasesBySpecimenDate", "newCasesBySpecimenDateRollingRate")),
@@ -36,12 +39,9 @@ dashboardPage(
       menuSubItem(text = "Deaths", tabName ="InjuriesDeaths"))
     )),
     sidebarMenu(sidebarMenu(menuItem(
-      text = "Alcohol Admissions",
+      text = "SIMD Map",
       startExpanded = FALSE,
-      menuItem(text ="Main Page", tabName = ""),
-      menuSubItem(text ="Coming Soon", tabName=""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""),
+      #menuItem(text ="Main Page", tabName = ""),
       menuSubItem(text = "Coming Soon", tabName =""))
     )),
     sidebarMenu(sidebarMenu(menuItem(
@@ -333,13 +333,14 @@ dashboardPage(
           titlePanel(strong("Number of deaths by age group in Scotland")),
           h4("The number of deaths across Scotland between 2012 and 2021 by unintentional injury by age group."),
           plotOutput(outputId = "Injuryagedeaths")),
+
   
   # Main Page
     
     tabItem(tabName = "MainPage",
             titlePanel("Welcome to the General Health Statistics Dashboard for Scotland"),
             mainPanel(
-              h6(("This Dashboard was last updated on the 1st of February 2023 - Unintentional Injuries Section Complete and some download buttons added to plots in Coronavirus Case Section")),
+              h6(("This Dashboard was last updated on the 7th of February 2023 - Added Tableau, GitHub Source, and Feedback/Bug Reporting Links, alongside starting Interactive SIMD Map")),
               h3(strong("Objective:")),
               p("This Dashboard has been created to allow users the opportunity to easily access data visuals that help emphasise and explain the effcts each health condition has on the NHS is in an easier and understandable way"),
               #br(),

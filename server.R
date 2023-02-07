@@ -299,5 +299,5 @@ covidcases <- function(input, output){
          filename = "covidcasesdeprivation.xlsx",
          content = function (file) {
            writexl::write_xlsx(CasesDeprivation,file)
-         })
+      })
 }
