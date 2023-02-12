@@ -11,38 +11,35 @@ dashboardPage(
                   tags$li(class="dropdown", tags$a(href ="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAD_Bs3ZUOEZOMEVMMUxMSEFJUjlaOVgwU0wzNUJWRy4u", icon("bug"), "Feedback and Bugs", target="_blank")),
                   tags$li(class="dropdown", tags$a(href="https://github.com/Benny24aa/General-Health-Dashboard-Scotland", icon("github"), "Source Code", target="_blank"))),
   dashboardSidebar(
-  #  selectInput(inputId = "AreaName", label = "Select a Local Area:", choices = unique(Coviddata$areaName)),
-    #selectInput(inputId = "column", label = "Select a column to plot", choices = c("newCasesBySpecimenDate", "newCasesBySpecimenDateRollingRate")),
     sidebarMenu(sidebarMenu(menuItem(
-      text = "Main Page",
-      startExpanded = TRUE,
-      menuItem(text ="Main Page", tabName = "MainPage")
+      text = "Main Page",icon = icon("info-circle"),
+      startExpanded = FALSE,
+      menuItem(text ="Main Page", tabName = "MainPage", icon = icon("info-circle"))
       ))),
     sidebarMenu(sidebarMenu(menuItem(
-      text = "Coronavirus",
+      text = "Coronavirus",icon=icon("viruses"),
       startExpanded = FALSE,
-     # menuItem(text ="Main Page", tabName = ""),
-      menuSubItem(text ="Cases", tabName="CoronavirusCaseGraph"),
-      menuSubItem(text = "Deaths", tabName ="CoronavirusDeathGraph"),
-      menuSubItem(text = "Testing", tabName ="testing"),
-      menuSubItem(text = "Healthcare", tabName = "Healthcare"),
-      menuSubItem(text = "Vaccination", tabName = "Vaccines")
+      menuSubItem(text ="Cases", tabName="CoronavirusCaseGraph", icon=icon("virus")),
+      menuSubItem(text = "Deaths", tabName ="CoronavirusDeathGraph", icon=icon("skull")),
+      menuSubItem(text = "Testing", tabName ="testing", icon=icon("microscope")),
+      menuSubItem(text = "Healthcare", tabName = "Healthcare", icon=icon("hospital")),
+      menuSubItem(text = "Vaccination", tabName = "Vaccines", icon=icon("syringe"))
       )
     
     )),
     sidebarMenu(sidebarMenu(menuItem(
-      text = "Unintentional Injuries",
+      text = "Unintentional Injuries", icon=icon("user-injured"),
       startExpanded = FALSE,
       #menuItem(text ="Main Page", tabName = ""),
-      menuSubItem(text ="Traffic Collisions Admissions", tabName="RTAs"),
-      menuSubItem(text = "Fall Admissions", tabName ="Falls"),
-      menuSubItem(text = "Deaths", tabName ="InjuriesDeaths"))
+      menuSubItem(text ="Traffic Collisions Admissions", tabName="RTAs", icon=icon("car")),
+      menuSubItem(text = "Fall Admissions", tabName ="Falls", icon =icon("person-falling")),
+      menuSubItem(text = "Deaths", tabName ="InjuriesDeaths", icon=icon("skull")))
     )),
     sidebarMenu(sidebarMenu(menuItem(
-      text = "SIMD Map",
+      text = "SIMD Map",icon=icon("globe"),
       startExpanded = FALSE,
       #menuItem(text ="Main Page", tabName = ""),
-      menuSubItem(text = "Coming Soon", tabName =""))
+      menuSubItem(text = "Coming Soon", tabName ="", icon=icon("globe")))
     )),
     sidebarMenu(sidebarMenu(menuItem(
       text = "Learning Disabilities",
@@ -338,34 +335,28 @@ dashboardPage(
   # Main Page
     
     tabItem(tabName = "MainPage",
-            titlePanel("Welcome to the General Health Statistics Dashboard for Scotland"),
+            column(12,
+                   p(h2("Welcome to the General Health Statistics Dashboard for Scotland", 
+                   ))),
+            style = "color: #1E3F66; font-size: 20px",
             mainPanel(
-              h6(("This Dashboard was last updated on the 7th of February 2023 - Added Tableau, GitHub Source, and Feedback/Bug Reporting Links, alongside starting Interactive SIMD Map")),
-              h3(strong("Objective:")),
-              p("This Dashboard has been created to allow users the opportunity to easily access data visuals that help emphasise and explain the effcts each health condition has on the NHS is in an easier and understandable way"),
-              #br(),
-              h3(strong("Why have I done this?")),
-              #br(),
-              p("The last few years have been tough for the National Health Service across the Uninted Kingdom. The COVID-19 Pandemic has affected healthcare services massively and data visualisations will be available in regards of delays caused by the pandemic. However, the dashboard's main objective is to educate people about health statistics over the last 20/30 years, and how they compare to more recent times."),
-             # br(),
-              h3(strong("What is in this dashboard?")),
-             p("Visualisations such as graphs, interactive maps, and datasets to highlight the importance of further intervention and early detection in certain Healthboards/Local Authorities. Explore the idea of deprivation, gender, age, nationality, location (healthboard, data zone, int zone or local authority) and how it affects the trend and statistical properties of health conditions affecting the NHS across the UK."),
-             h3(strong("What Health Conditions are explored?")),
-             h6("This list is not limited to but includes:"),
-             p("Coronavirus - Cases, Mortality, Vaccination Rates, Testing, Hospital Admissions, and more"),
-             p("Alcohol Statistics - Admissions, Addiction Services, Waiting Times, Mortality and more."),
-             p("Unintentional Injuries - Mortality, Admissions, RTA's, Falls, Assaults, Poisioning and more."),
-             p("Learning Disabilities - Admissions, Girls on the Spectrum, Males on the Spectrum, Detection and Early Prevention"),
-             p("Life Expectancy - Early Mortality, Types of Mortality per year, Excess Deaths and more"),
-             p("Drug Statistics - Admissions, Addiction Services, Mortality, Waiting Times, Scotland Statistics and more."),
-             p("Stroke Statistics - Admissions, Mortality, Deprivation, Gender, Age and more."),
-             p("Cancer Statistics - Mortality Rates by Cancer Typ, Detection, Incidence Rates by Cancer Type, and more"),
-             p("Ambulance Service - A&E Waiting Times, Response Times, Age Group requiring Ambulance, Gender, and more."),
-             p("Mental Health - Waiting Times, Drugs Prescribed, and more."),
-             p("Alzheimer Disease - Mortality, Gender and Age"),
-             p("Abortions and Births - Birth Rates, Abortion Rates, and more"),
-             p("Care Home - Looking at the census (mainly Scotland)"),
-             p("Radiology and Endoscopy - Rates of Detection by Type, Waiting Times and more"),
+              column(12,
+                     style = "color: black; font-size: 20px",
+                     h4(tags$b("Summary of the Dashboard")),
+                     p(h5("There are tabs at the side for each topic area within the dashboard which give an overview of summary analysis for the entire of Scotland. Some sections will have breakdowns at Healthboard, Local Authority, HSC Partnership, Neighbourhood Zones, and Data Zones.
+                          We will also explore this each topic area by including analyse of non-location factors such as age, sex, and deprivation.")), 
+                     h4(tags$b("How to use the dashboard")),
+                     p(h5("On some of the side tabs there will be menu boxes that will allow the user to select the data they wish to explore. You will see different types
+                          of drop-down boxes such as drop-down box for NHS Healthboard, Local Authority and so on. Drop-Down boxes for subgroups of interest such as deprivation, age group, and sex also exist.
+                          This will change the graphs and visualisations on the tab accordingly depending on what you choose to see. "),
+                       h4(tags$b("Further Information")),
+                       p(h5("You can access the code by clicking the link on the right side of the screen. This will take you to my Github repsitory, which has more information. I have also 
+                          linked my Tableau Profile alongside my Health Statistics Dashboard that I developed using the tool. If you want to submit feedback please use the feedback button also on the right side.
+                          If you wish to contact me by email for queries, please email harleyb101020@gmail.com.")),
+                       h4(tags$b("Open Data Information")),
+                       p(h5("All content is available under the Open Government License V3.0, and is available on NHS Scotland Open Data except where otherwise stated. If you need any assistance with this, please visit the UK Government Website for more information regarding the Open Government License.
+                          ")),
+                     ))
             ),
             )
  
