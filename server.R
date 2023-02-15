@@ -542,6 +542,12 @@ covidcases <- function(input, output){
           legend.position = "none"
         )  
       })
+      SIMD2016V2020Data <-read_excel("SIMD2016V2020.xlsx")
+      SIMDdata <-read_excel("SIMDFile.xlsx")
+      output$SIMDTableDisplay = DT::renderDataTable({
+        SIMDdata
+      })
+      
       
       #Download Data Buttons
       

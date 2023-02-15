@@ -36,10 +36,10 @@ dashboardPage(
       menuSubItem(text = "Deaths", tabName ="InjuriesDeaths", icon=icon("skull")))
     )),
     sidebarMenu(sidebarMenu(menuItem(
-      text = "SIMD Map",icon=icon("globe"),
+      text = "SIMD",icon=icon("globe"),
       startExpanded = FALSE,
-      #menuItem(text ="Main Page", tabName = ""),
-      menuSubItem(text = "Coming Soon", tabName ="", icon=icon("globe")))
+      menuSubItem(text = "Interactive Data Table", tabName ="SIMDTable", icon=icon("table")),
+      menuSubItem(text = "Interactive Map - Soon", tabName ="", icon=icon("globe")))
     )),
     sidebarMenu(sidebarMenu(menuItem(
       text = "Learning Disabilities",
@@ -330,6 +330,14 @@ dashboardPage(
           titlePanel(strong("Number of deaths by age group in Scotland")),
           h4("The number of deaths across Scotland between 2012 and 2021 by unintentional injury by age group."),
           plotOutput(outputId = "Injuryagedeaths")),
+  
+  #SIMD Interactive Data Table
+  
+  tabItem(tabName = "SIMDTable",
+          titlePanel(strong("Data Zones based on Country and Local Authority Deciles and Quintiles")),
+          h4("Note: An area may be classed as deprived but residents may not be deprived, and an area may be classed as not deprived but this doesn't mean residents are not deprived. SIMD is not a tool for saying how much more deprived one area is from another."),
+          br(),
+          DT::dataTableOutput("SIMDTableDisplay")),
 
   
   # Main Page
@@ -367,15 +375,6 @@ dashboardPage(
 
 
 
-
-
-
-
-##fluidPage(
-
-## selectInput(inputId = "AreaName", label = "Select a Local Area:", choices = unique(Coviddata$areaName)),
-##  selectInput(inputId = "column", label = "Select a column to plot", choices = c("newCasesBySpecimenDate", "newCasesBySpecimenDateRollingRate")),
-## DTOutput(outputId = "datatable1"),
-## plotOutput(outputId = "plot1")
+##
 
 ##)

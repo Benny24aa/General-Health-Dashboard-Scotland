@@ -29,6 +29,8 @@ library(cowplot)
 library(googleway)
 library(ggrepel)
 library(ggspatial)
+library(maps)
+library(mapproj)
 #COVID Section Data Files
 Coviddata <- read_excel("ScotlandCase.xlsx")
 VaccineData <- read_excel("ScotlandVaccine.xlsx")
@@ -53,6 +55,9 @@ genderfalls <-read_excel("Gender Data Falls.xlsx")
 #Unintentional Injuries Deaths Data Files
 Injuriesagedeaths <-read_excel("Age Injuries Deaths.xlsx")
 Injurieslocations <-read_excel("InjuryTypeDeaths.xlsx")
-#SIMD Map
-#Healthboards <- st_read("SG_SIMD_2020.shp")
-#plot(Healthboards$geometry)
+#SIMDStuff
+SIMDdata <-read_excel("SIMDFile.xlsx")
+SIMD2016V2020Data <-read_excel("SIMD2016V2020.xlsx")
+#COVID Cases by Healthboard Map
+#Healthboards <- readOGR("SG_NHS_HealthBoards_2019.shp")
+#covidcasemapdata <- read_excel("covidcasesinteractivemap.xlsx")
