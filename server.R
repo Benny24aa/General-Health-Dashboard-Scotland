@@ -59,7 +59,8 @@ covidcases <- function(input, output){
   
   output$plot1 <- renderPlot({
     
-    graphcovid <- ggplot(data = filteredData(), aes_string(x = "date", y = input$column, color=input$column)) + geom_point() + geom_line() + theme(panel.border = element_rect(fill = "transparent", color = 4, size = 2)) +   theme(
+    graphcovid <- ggplot(data = filteredData(), aes_string(x = "date", y = input$column, color=input$column)) + geom_point() + geom_line() + theme(panel.border = element_rect(fill = "transparent", color = 4, size = 2)) +  
+      theme(
       panel.background = element_rect(fill='#ECF0F5'), #transparent panel bg
       plot.background = element_rect(fill='#ECF0F5', color=NA), #transparent plot bg
       panel.grid.major = element_blank(), #remove major gridlines
@@ -322,7 +323,7 @@ covidcases <- function(input, output){
       
       output$CovidPatientsinhospital <- renderPlot({
         
-        ggplot(data = COVIDHospital, aes(x=date, y=hospitaases, group=areaName, fill=hospitalCases)) + geom_bar(stat="identity", position=position_dodge()) +geom_line(aes(x=date, y=hospitalCases),size = 1.5, color ="red")+ theme(panel.border = element_rect(fill = "transparent", color = 4, size = 3))+   theme(
+        ggplot(data = COVIDHospital, aes(x=date, y=hospitalCases, group=areaName, fill=hospitalCases)) + geom_bar(stat="identity", position=position_dodge()) +geom_line(aes(x=date, y=hospitalCases),size = 1.5, color ="red")+ theme(panel.border = element_rect(fill = "transparent", color = 4, size = 3))+   theme(
           panel.background = element_rect(fill='#ECF0F5'), #transparent panel bg
           plot.background = element_rect(fill='#ECF0F5', color=NA), #transparent plot bg
           panel.grid.major = element_blank(), #remove major gridlines
@@ -547,6 +548,123 @@ covidcases <- function(input, output){
       output$SIMDTableDisplay = DT::renderDataTable({
         SIMDdata
       })
+#Excess Mortality Healthboard Section
+      filterexcessmortality <- reactive({
+        ExcessDeaths <- read_excel("excessdeathdata.xlsx")
+        filterexcessmortality <- ExcessDeaths[ExcessDeaths$Area_name == input$ExcessAreaName,]
+        return(filterexcessmortality)
+      })
+
+      output$excessmortalitygraphhb <- renderPlot({
+      ggplot(data=filterexcessmortality(), aes_string(x="Week_ending", y = "Count", color= "Count")) + geom_point()+ geom_line() + theme(panel.border = element_rect(fill = "transparent", color = 4, size = 2)) +  
+        theme(
+          panel.background = element_rect(fill='#ECF0F5'), #transparent panel bg
+          plot.background = element_rect(fill='#ECF0F5', color=NA), #transparent plot bg
+          panel.grid.major = element_blank(), #remove major gridlines
+          panel.grid.minor = element_blank(), #remove minor gridlines
+          legend.background = element_rect(fill='white'), #transparent legend bg
+          legend.box.background = element_rect(fill='#ECF0F5'),
+          legend.position = "none"
+        )
+      })
+      
+      output$excessmortalitygraphvariationpercentage <- renderPlot({
+        ggplot(data=filterexcessmortality(), aes_string(x="Week_ending", y = "VariationPercentage", color= "VariationPercentage")) + geom_point()+ geom_bar(stat="identity", position=position_dodge()) + theme(panel.border = element_rect(fill = "transparent", color = 4, size = 2)) +  
+          theme(
+            panel.background = element_rect(fill='#ECF0F5'), #transparent panel bg
+            plot.background = element_rect(fill='#ECF0F5', color=NA), #transparent plot bg
+            panel.grid.major = element_blank(), #remove major gridlines
+            panel.grid.minor = element_blank(), #remove minor gridlines
+            legend.background = element_rect(fill='white'), #transparent legend bg
+            legend.box.background = element_rect(fill='#ECF0F5'),
+            legend.position = "none"
+          )
+      })
+      
+        output$excessdeathbyhb<- downloadHandler(
+          filename = "Scotlandexcessdeaths.xlsx",
+          content = function (file) {
+            writexl::write_xlsx(filterexcessmortality(),file)
+          })
+
+#Excess Deaths Deprivation Section
+        filterexcessmortalitydeprivation <- reactive ({
+          ExcessDeathsDeprivation <- read_excel("deprivationexcessdeath.xlsx")
+        filterexcessmortalitydeprivation <- ExcessDeathsDeprivation[ExcessDeathsDeprivation$Category == input$ExcessDeathDeprivation,]
+        return(filterexcessmortalitydeprivation)
+        })
+        
+        output$excessmortalitydeprivationgraph <- renderPlot({
+          ggplot(data=filterexcessmortalitydeprivation(), aes_string(x="Week_ending", y = "Count", color= "Count")) + geom_point()+ geom_line() + theme(panel.border = element_rect(fill = "transparent", color = 4, size = 2)) +  
+          theme(
+            panel.background = element_rect(fill='#ECF0F5'), #transparent panel bg
+            plot.background = element_rect(fill='#ECF0F5', color=NA), #transparent plot bg
+            panel.grid.major = element_blank(), #remove major gridlines
+            panel.grid.minor = element_blank(), #remove minor gridlines
+            legend.background = element_rect(fill='white'), #transparent legend bg
+            legend.box.background = element_rect(fill='#ECF0F5'),
+            legend.position = "none"
+          )
+        })
+    
+         output$excessmortalitygraphdeprivationvariationpercentage <- renderPlot({
+           ggplot(data=filterexcessmortalitydeprivation(), aes_string(x="Week_ending", y = "VariationPercentage", color= "VariationPercentage")) + geom_point()+ geom_bar(stat="identity", position=position_dodge()) + theme(panel.border = element_rect(fill = "transparent", color = 4, size = 2)) +  
+            theme(
+              panel.background = element_rect(fill='#ECF0F5'), #transparent panel bg
+              plot.background = element_rect(fill='#ECF0F5', color=NA), #transparent plot bg
+              panel.grid.major = element_blank(), #remove major gridlines
+              panel.grid.minor = element_blank(), #remove minor gridlines
+              legend.background = element_rect(fill='white'), #transparent legend bg
+              legend.box.background = element_rect(fill='#ECF0F5'),
+              legend.position = "none"
+            )
+        })
+         
+         output$excessdeathdeprivation<- downloadHandler(
+           filename = "Scotlandexcessdeathsderpivation.xlsx",
+           content = function (file) {
+             writexl::write_xlsx(filterexcessmortalitydeprivation(),file)
+           })
+#Sex and Gender Excess Deaths Section
+         
+         filterexcessmortalityagesex <- reactive({
+           ExcessDeathsAgeandSex1 <- read_excel("excessdeathgenderage.xlsx")
+           filterexcessmortalityagesex <- ExcessDeathsAgeandSex1[ExcessDeathsAgeandSex1$Type == input$ExcessAgeSexType,]
+           filterexcessmortalityagesex <- ExcessDeathsAgeandSex1[ExcessDeathsAgeandSex1$Category == input$ExcessAgeSexCategory,]
+           return(filterexcessmortalityagesex)
+         })
+         
+         output$excessmortalitygraphagesexgraph <- renderPlot({
+           ggplot(data=filterexcessmortalityagesex(), aes_string(x="Week_ending", y = "Count", color= "Count")) + geom_point()+ geom_line() + theme(panel.border = element_rect(fill = "transparent", color = 4, size = 2)) +  
+             theme(
+               panel.background = element_rect(fill='#ECF0F5'), #transparent panel bg
+               plot.background = element_rect(fill='#ECF0F5', color=NA), #transparent plot bg
+               panel.grid.major = element_blank(), #remove major gridlines
+               panel.grid.minor = element_blank(), #remove minor gridlines
+               legend.background = element_rect(fill='white'), #transparent legend bg
+               legend.box.background = element_rect(fill='#ECF0F5'),
+               legend.position = "none"
+             )
+         })
+         
+         output$excessmortalitygraphagesexvariationpercentage <- renderPlot({
+           ggplot(data=filterexcessmortalityagesex(), aes_string(x="Week_ending", y = "VariationPercentage", color= "VariationPercentage")) + geom_point()+ geom_bar(stat="identity", position=position_dodge()) + theme(panel.border = element_rect(fill = "transparent", color = 4, size = 2)) +  
+             theme(
+               panel.background = element_rect(fill='#ECF0F5'), #transparent panel bg
+               plot.background = element_rect(fill='#ECF0F5', color=NA), #transparent plot bg
+               panel.grid.major = element_blank(), #remove major gridlines
+               panel.grid.minor = element_blank(), #remove minor gridlines
+               legend.background = element_rect(fill='white'), #transparent legend bg
+               legend.box.background = element_rect(fill='#ECF0F5'),
+               legend.position = "none"
+             )
+         })
+         
+         output$excessdeathagesexdownload<- downloadHandler(
+           filename = "Scotlandexcessdeathsagesex.xlsx",
+           content = function (file) {
+             writexl::write_xlsx(filterexcessmortalityagesex(),file)
+           })
       
       
       #Download Data Buttons
@@ -578,4 +696,11 @@ covidcases <- function(input, output){
          content = function (file) {
            writexl::write_xlsx(CasesDeprivation,file)
       })
+       
+       #output$covidmaptest <- renderTmap ({
+       #tm_shape(Healthboards_shp) + 
+       #tm_polygons() +
+       # tm_view(set.view = c(-3.188267, 55.953251, 5.5))
+       #})
+       
 }

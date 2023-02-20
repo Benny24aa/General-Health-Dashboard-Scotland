@@ -24,9 +24,20 @@ dashboardPage(
       menuSubItem(text = "Testing", tabName ="testing", icon=icon("microscope")),
       menuSubItem(text = "Healthcare", tabName = "Healthcare", icon=icon("hospital")),
       menuSubItem(text = "Vaccination", tabName = "Vaccines", icon=icon("syringe"))
+     # menuSubItem(text ="Case Map - Coming Soon", tabName="covidtestmap", icon=icon("globe"))
       )
     
     )),
+    
+    sidebarMenu(sidebarMenu(menuItem(
+      text = "Excess Mortality", icon=icon("skull"),
+      startExpanded = FALSE,
+      menuSubItem(text ="Healthboard Analysis", tabName="HealthboardExcessDeaths", icon=icon("chart-line-up")),
+      menuSubItem(text = "Deprivation Analysis", tabName ="ExcessDeathAnalysisDeprivation", icon=icon("")),
+      menuSubItem(text = "Age and Sex Analysis", tabName ="excessdeathageandsexpage", icon=icon("")))
+      
+    )),
+    
     sidebarMenu(sidebarMenu(menuItem(
       text = "Unintentional Injuries", icon=icon("user-injured"),
       startExpanded = FALSE,
@@ -39,153 +50,16 @@ dashboardPage(
       text = "SIMD",icon=icon("globe"),
       startExpanded = FALSE,
       menuSubItem(text = "Interactive Data Table", tabName ="SIMDTable", icon=icon("table")),
-      menuSubItem(text = "Interactive Map - Soon", tabName ="", icon=icon("globe")))
+      menuSubItem(text = "Interactive Map - Soon", tabName ="testmap", icon=icon("globe")))
     )),
     sidebarMenu(sidebarMenu(menuItem(
-      text = "Learning Disabilities",
+      text = "Coming Soon", icon=icon(""),
       startExpanded = FALSE,
-      menuItem(text ="Main Page", tabName = ""),
-      menuSubItem(text ="Coming Soon", tabName=""),
-      menuSubItem(text = "Coming Soon", tabName =""),
+      menuSubItem(text ="Coming Soon", tabName="", icon=icon("")),
+      menuSubItem(text = "Coming Soon", tabName ="", icon=icon("")),
       menuSubItem(text = "Coming Soon", tabName =""),
       menuSubItem(text = "Coming Soon", tabName =""))
-     )),
-    sidebarMenu(sidebarMenu(menuItem(
-      text = "Life Expectancy",
-      startExpanded = FALSE,
-      menuItem(text ="Main Page", tabName = ""),
-      menuSubItem(text ="Coming Soon", tabName=""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""))
-    )),
-    sidebarMenu(sidebarMenu(menuItem(
-      text = "Drug Statistics",
-      startExpanded = FALSE,
-      menuItem(text ="Main Page", tabName = ""),
-      menuSubItem(text ="Coming Soon", tabName=""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""))
-    )),
-    sidebarMenu(sidebarMenu(menuItem(
-      text = "Strokes",
-      startExpanded = FALSE,
-      menuItem(text ="Main Page", tabName = ""),
-      menuSubItem(text ="Coming Soon", tabName=""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""))
-    )),
-    sidebarMenu(sidebarMenu(menuItem(
-      text = "Cancer",
-      startExpanded = FALSE,
-      menuItem(text ="Main Page", tabName = ""),
-      menuSubItem(text ="Coming Soon", tabName=""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""))
-    )),
-    sidebarMenu(sidebarMenu(menuItem(
-      text = "Excess Mortality",
-      startExpanded = FALSE,
-      menuItem(text ="Main Page", tabName = ""),
-      menuSubItem(text ="Coming Soon", tabName=""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""))
-    )),
-    sidebarMenu(sidebarMenu(menuItem(
-      text = "Ambulance Service",
-      startExpanded = FALSE,
-      menuItem(text ="Main Page", tabName = ""),
-      menuSubItem(text ="Coming Soon", tabName=""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""))
-    )),
-    sidebarMenu(sidebarMenu(menuItem(
-      text = "Mental Health",
-      startExpanded = FALSE,
-      menuItem(text ="Main Page", tabName = ""),
-      menuSubItem(text ="Coming Soon", tabName=""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""))
-    )),
-    sidebarMenu(sidebarMenu(menuItem(
-      text = "Alzheimer Disease",
-      startExpanded = FALSE,
-      menuItem(text ="Main Page", tabName = ""),
-      menuSubItem(text ="Coming Soon", tabName=""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""))
-    )),
-    sidebarMenu(sidebarMenu(menuItem(
-      text = "Mortality",
-      startExpanded = FALSE,
-      menuItem(text ="Main Page", tabName = ""),
-      menuSubItem(text ="Coming Soon", tabName=""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""))
-    )),
-    sidebarMenu(sidebarMenu(menuItem(
-      text = "Abortions and Births",
-      startExpanded = FALSE,
-      menuItem(text ="Main Page", tabName = ""),
-      menuSubItem(text ="Coming Soon", tabName=""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""))
-    )),
-    sidebarMenu(sidebarMenu(menuItem(
-      text = "Care Homes",
-      startExpanded = FALSE,
-      menuItem(text ="Main Page", tabName = ""),
-      menuSubItem(text ="Coming Soon", tabName=""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""))
-    )),
-    sidebarMenu(sidebarMenu(menuItem(
-      text = "Heart Disease",
-      startExpanded = FALSE,
-      menuItem(text ="Main Page", tabName = ""),
-      menuSubItem(text ="Coming Soon", tabName=""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""))
-    )),
-    sidebarMenu(sidebarMenu(menuItem(
-      text = "Radiology",
-      startExpanded = FALSE,
-      menuItem(text ="Main Page", tabName = ""),
-      menuSubItem(text ="Coming Soon", tabName=""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""))
-    )),
-    sidebarMenu(sidebarMenu(menuItem(
-      text = "Endoscopy",
-      startExpanded = FALSE,
-      menuItem(text ="Main Page", tabName = ""),
-      menuSubItem(text ="Coming Soon", tabName=""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""))
-    )),
-    sidebarMenu(sidebarMenu(menuItem(
-      text = "Obesity",
-      startExpanded = FALSE,
-      menuItem(text ="Main Page", tabName = ""),
-      menuSubItem(text ="Coming Soon", tabName=""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""),
-      menuSubItem(text = "Coming Soon", tabName =""))
-    ))
-    
+     ))
   ),
   
   ## COVID CASE PAGE          
@@ -339,6 +213,44 @@ dashboardPage(
           br(),
           DT::dataTableOutput("SIMDTableDisplay")),
 
+   tabItem(tabName = "HealthboardExcessDeaths",
+           style = "color: #1E3F66; font-size: 12px",
+           selectInput(inputId = "ExcessAreaName", label = "Select Local Area:", choices = unique(ExcessDeaths$Area_name)),
+           titlePanel(strong("Excess Deaths Broken Down by Healthboard")),
+           h4("The number of excess deaths across Scotland between 2020 and 2023 by Healthboard of choice every week."),
+           plotOutput(outputId = "excessmortalitygraphhb"),
+           titlePanel(strong("2020 to 2023 compared with the 2015-2019 average Percent Change")),
+           h4("This graph compares the number of deaths in the most recent weeks to the average over the past 5 years allows estimation of the numbers of excess deaths and expresses it as a percent change. "),
+           plotOutput(outputId = "excessmortalitygraphvariationpercentage"),
+           br(),
+           downloadButton("excessdeathbyhb", "Download File")),
+  tabItem(tabName = "ExcessDeathAnalysisDeprivation",
+          style = "color: #1E3F66; font-size: 12px",
+          selectInput(inputId = "ExcessDeathDeprivation", label = "Select Deprivation Quintile:", choices = unique(ExcessDeathsDeprivation$Category)),
+          titlePanel(strong("Excess Deaths Broken Down by Deprivation Quantitle")),
+          h4("The number of excess deaths across Scotland between 2020 and 2023 by deprivation quantitle of choice every week."),
+          plotOutput(outputId = "excessmortalitydeprivationgraph"),
+          titlePanel(strong("2020 to 2023 compared with the 2015-2019 average Percent Change")),
+          h4("This graph compares the number of deaths in the most recent weeks to the average over the past 5 years allows estimation of the numbers of excess deaths and expresses it as a percent change."),
+          plotOutput(outputId = "excessmortalitygraphdeprivationvariationpercentage"),
+          br(),
+          downloadButton("excessdeathdeprivation", "Download File")),
+  tabItem(tabName = "excessdeathageandsexpage",
+          style = "color: #1E3F66; font-size: 12px",
+          selectInput(inputId = "ExcessAgeSexType", label = "Select Type:", choices = unique(ExcessDeathsAgeandSex1$Type)),
+          selectInput(inputId = "ExcessAgeSexCategory", label = "Select Category:", choices = unique(ExcessDeathsAgeandSex1$Category)),
+          titlePanel(strong("Excess Deaths Broken Down by Age and Sex")),
+          h4("The number of excess deaths across Scotland between 2020 and 2023 by either Age or Sex of choice every week."),
+          plotOutput(outputId = "excessmortalitygraphagesexgraph"),
+          titlePanel(strong("2020 to 2023 compared with the 2015-2019 average Percent Change")),
+          h4("This graph compares the number of deaths in the most recent weeks to the average over the past 5 years allows estimation of the numbers of excess deaths and expresses it as a percent change."),
+          plotOutput(outputId = "excessmortalitygraphagesexvariationpercentage"),
+          br(),
+          downloadButton("excessdeathagesexdownload", "Download File")),
+          
+  
+
+
   
   # Main Page
     
@@ -372,7 +284,9 @@ dashboardPage(
 )
 )
 
-
+# tabItem(tabName = "covidtestmap",
+#       h4("Being Tested"),
+#    tmapOutput(outputId = "covidmaptest")),
 
 
 ##
